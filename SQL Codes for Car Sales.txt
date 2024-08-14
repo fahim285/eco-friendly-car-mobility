@@ -1,0 +1,14 @@
+DROP DATABASE IF EXISTS `car_sale`;
+
+CREATE DATABASE IF NOT EXISTS `car_sale`;
+
+CREATE TABLE IF NOT EXISTS `car_sale`.`admin` (`Administrator_ID` INT NOT NULL AUTO_INCREMENT , `Fullname` TEXT NOT NULL , `Email_Address` TEXT NOT NULL , `Password` TEXT NOT NULL , PRIMARY KEY (`Administrator_ID`), UNIQUE (`Email_Address`)) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `car_sale`.`customers` (`Customer_ID` INT NOT NULL AUTO_INCREMENT , `Fullname` TEXT NOT NULL , `Email_Address` TEXT NOT NULL , `Phone_Number` TEXT NOT NULL , `Image` TEXT NOT NULL , `Password` TEXT NOT NULL , PRIMARY KEY (`Customer_ID`), UNIQUE (`Email_Address`)) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `car_sale`.`cars` (`Car_ID` INT NOT NULL AUTO_INCREMENT , `Model` TEXT NOT NULL , `Make` TEXT NOT NULL , `Quantity` TEXT NOT NULL , `Price` DOUBLE NOT NULL , `Image` TEXT NOT NULL , `Description` TEXT NOT NULL, `Category` TEXT NOT NULL, `Fee` TEXT NOT NULL, `Document` TEXT NOT NULL, `Status` TEXT NOT NULL DEFAULT 'Pending', `Green_Index` TEXT NOT NULL, PRIMARY KEY (`Car_ID`)) ENGINE = InnoDB;
+
+ALTER TABLE `cars` ADD `User_ID` INT NOT NULL AFTER `Car_ID`;
+
+INSERT INTO `car_sale`.`admin`(`Administrator_ID`, `Fullname`, `Email_Address`, `Password`) VALUES ('NULL','Administrator One','admin@gmail.com',md5('12345678'));
+
